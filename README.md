@@ -1,6 +1,6 @@
 # Reddit App
 
-![Pipeline Badge](https://github.com/github/docs/actions/workflows/node.js.yml/badge.svg)
+![Pipeline Badge](https://github.com/paty-oliveira/reddit-app/actions/workflows/node.js.yml/badge.svg)
 
 
 ## Project description

@@ -26,8 +26,8 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Compilation
+    - name: Compile App
       run: npm run build --if-present
 
-    - name: Run unit-tests
+    - name: Run tests
       run: npm test
