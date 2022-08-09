@@ -8,7 +8,9 @@ Object {
       <div
         class="App"
       >
-        <header>
+        <header
+          class="App-header"
+        >
           <h1>
             Reddit App
           </h1>
@@ -20,7 +22,9 @@ Object {
     <div
       class="App"
     >
-      <header>
+      <header
+        class="App-header"
+      >
         <h1>
           Reddit App
         </h1>
