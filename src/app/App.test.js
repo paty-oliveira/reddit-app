@@ -5,10 +5,10 @@ afterEach(cleanup);
 
 describe('<App /> spec', function () {
 
-  it('renders the component', () => {
-    const app = render(<App />);
+  it('Should render the title of the App', () => {
+    const { container} = render(<App />);
 
-    expect(app).toMatchSnapshot()
+    expect(container).toHaveTextContent("Reddit App")
   });
 
 });
