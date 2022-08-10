@@ -1,0 +1,26 @@
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchBar {
+    height: 50px;
+    width: 400px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+#search-button {
+    font-size: 20px;
+    height: 65px;
+    width: 100px;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+#search-button:hover {
+    font-weight: bolder;
+    cursor: pointer;
+}
