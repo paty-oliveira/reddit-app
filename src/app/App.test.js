@@ -1,14 +1,10 @@
-import { render, cleanup } from '@testing-library/react';
 import App from './App';
+import {create} from 'react-test-renderer';
 
-afterEach(cleanup);
+describe('<App />', () => {
 
-describe('<App /> spec', function () {
-
-  it('Should render the title of the App', () => {
-    const { container} = render(<App />);
-
-    expect(container).toHaveTextContent("Reddit App")
+  it('should match with snapshot', function () {
+    const app = create(<App />)
+    expect(app.toJSON()).toMatchSnapshot()
   });
-
 });
