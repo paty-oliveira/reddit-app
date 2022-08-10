@@ -1,17 +1,16 @@
 import './Header.css';
 import { FcReddit } from "react-icons/fc";
+import { SearchBar } from "../search-bar/SearchBar";
 
 export function Header() {
 
     return (
         <header className="App-header">
-            <div className="logo" >
-                <FcReddit className="logo-icon" />
+            <div className="logo-container" >
+                <FcReddit id="logo-icon" />
                 <p>Reddit</p>
             </div>
-            <form>
-                <input type="text" id="search" name="searchBar" value="Search" />
-            </form>
+            <SearchBar />
         </header>
     )
 }
