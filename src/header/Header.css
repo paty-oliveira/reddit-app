@@ -5,7 +5,7 @@
     border-bottom: black solid;
 }
 
-.logo-container {
+.header-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,4 +15,8 @@
 
 #logo-icon {
     font-size: 80px;
+}
+
+#profile-icon {
+    font-size: 50px;
 }
