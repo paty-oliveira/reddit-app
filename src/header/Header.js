@@ -1,3 +1,4 @@
+import React from "react";
 import "./Header.css";
 import { FcReddit } from "react-icons/fc";
 import { SearchBar } from "../search-bar/SearchBar";
