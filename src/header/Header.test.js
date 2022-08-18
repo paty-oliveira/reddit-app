@@ -9,7 +9,7 @@ describe('<Header />', () => {
         const expectedResult = 1;
         const actualResult = container.getElementsByClassName('App-header').length;
 
-        expect(actualResult).toBe(expectedResult)
+        expect(actualResult).toBe(expectedResult);
     });
 
     it('should have two elements belonging to header-container class ', function () {
@@ -31,6 +31,6 @@ describe('<Header />', () => {
     it('should render the SearchBar component', function () {
         render(<Header />);
 
-        expect(screen.getByText('Search')).toBeInTheDocument()
+        expect(screen.getByText('Search')).toBeInTheDocument();
     });
 })
