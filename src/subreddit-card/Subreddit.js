@@ -1,14 +1,12 @@
 import React from "react";
 import './Subreddit.css';
 
-export function Subreddit(props) {
-    const title = props.title;
+
+export function Subreddit({title}) {
 
     return (
-        <div className='subreddit-item'>
-            <p>#{title}</p>
+        <div className='subreddit-item' >
+            <p data-testid="test-title-props">{title}</p>
         </div>
     )
 }
-
-

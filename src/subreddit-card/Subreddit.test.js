@@ -1,11 +1,11 @@
 import React from "react";
 import { Subreddit } from "./Subreddit";
-import {render} from "@testing-library/react";
-import {SubredditCategory} from "../subreddit-category/SubredditCategory";
+import {render, screen} from "@testing-library/react";
 
 describe('<Subreddit />', ()=> {
-    it('should ', function () {
-        
-    });
 
+    it('should pass title props', function () {
+        render(<Subreddit title="Home" />);
+        expect(screen.getByTestId('test-title-props')).toHaveTextContent('Home')
+    });
 })

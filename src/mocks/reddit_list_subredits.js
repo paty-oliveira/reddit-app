@@ -1,4 +1,3 @@
-
 export const subreddits = {
   "kind": "Listing",
   "data": {
