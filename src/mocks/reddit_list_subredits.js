@@ -1,4 +1,5 @@
-{
+
+export const subreddits = {
   "kind": "Listing",
   "data": {
     "after": "t5_2cneq",

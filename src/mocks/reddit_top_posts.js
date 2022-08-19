@@ -1,4 +1,4 @@
-{
+export const topPosts = {
   "kind": "Listing",
   "data": {
     "after": "t3_wid35a",
