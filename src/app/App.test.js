@@ -4,10 +4,25 @@ import React from "react";
 
 describe('<App />', () => {
 
-  beforeEach(() => render(<App />))
+  it('should have a div with App class', function () {
+    const { container } = render(<App />);
 
-  it('renders Header component', function () {
+    const expectedResult = 1;
+    const actualResult = container.getElementsByClassName('App').length;
+
+    expect(actualResult).toBe(expectedResult);
+  });
+
+  it('should renders Header component', function () {
+    render(<App />);
 
     expect(screen.getByText('Reddit')).toBeInTheDocument();
   });
+
+  it('should renders SubredditCategory component', function () {
+    render(<App />);
+
+    expect(screen.getByText('Subreddits')).toBeInTheDocument();
+  });
+
 });

@@ -1,11 +1,15 @@
 import React from "react";
 import './App.css';
 import { Header } from "../header/Header";
+import { SubredditCategory } from "../subreddit-category/SubredditCategory";
 
 function App() {
 
     return (
-        <Header />
+        <div className='App'>
+            <Header />
+            <SubredditCategory />
+        </div>
   );
 }
 
