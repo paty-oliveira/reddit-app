@@ -12,6 +12,24 @@ describe('<SubredditCategory />', () => {
         expect(screen.getByText(expectedTitle)).toBeInTheDocument();
     });
 
+    it('should render one element belonging to subreddit-container class', function () {
+        const { container } = render(<SubredditCategory />);
+
+        const expectedResult = 1;
+        const actualResult = container.getElementsByClassName('subreddit-container').length;
+
+        expect(actualResult).toBe(expectedResult)
+    });
+
+    it('should render one element belonging to subcategory-container class', function () {
+        const { container } = render(<SubredditCategory />);
+
+        const expectedResult = 1;
+        const actualResult = container.getElementsByClassName('subcategory-container').length;
+
+        expect(actualResult).toBe(expectedResult)
+    });
+
 })
 
 describe('extractSubRedditsTitle', ()=> {
@@ -24,7 +42,7 @@ describe('extractSubRedditsTitle', ()=> {
                 "dist": 25,
                 "modhash": "",
                 "geo_filter": "",
-                "children":
+                "children": [
                     {
                         "kind": "t5",
                         "data": {
@@ -133,7 +151,7 @@ describe('extractSubRedditsTitle', ()=> {
                             "user_is_moderator": null,
                             "allow_predictions_tournament": true
                         }
-                    }}
+                    }]}
 
         }
 
