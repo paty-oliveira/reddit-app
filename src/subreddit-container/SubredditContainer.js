@@ -1,9 +1,9 @@
 import React from "react";
-import './SubredditCategory.css';
+import './SubredditContainer.css';
 import { subreddits } from "../mocks/reddit_list_subredits";
 import { Subreddit } from "../subreddit-card/Subreddit";
 
-export function SubredditCategory() {
+export function SubredditContainer() {
     const subcategoryTitle = extractSubRedditsTitle(subreddits);
 
     return (
