@@ -1,18 +1,14 @@
 import React from "react";
-import './App.css';
+import "./App.css";
 import { Header } from "../header/Header";
-import { SubredditContainer } from "../subreddit-container/SubredditContainer";
-import { PostsContainer } from "../posts-container/PostsContainer";
+import { Home } from "../home/Home";
 
 function App() {
 
     return (
-        <div className='App'>
+        <div className="App">
             <Header />
-            <div className="app-container">
-                <SubredditContainer />
-                <PostsContainer />
-            </div>
+            <Home />
         </div>
   );
 }
