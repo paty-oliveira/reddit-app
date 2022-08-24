@@ -1,19 +1,20 @@
 import React from "react";
 import "./Post.css";
-import { BiLike, BiDislike } from "react-icons/bi";
+import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 
 export function Post(props) {
 
-    const { title, author, time, numberComments, ups, downs } = props;
+    const { title, author, time, numberComments, ups } = props;
 
     return (
         <div className="post-item">
             <div className="buttons-container">
                 <button type="button" className="button" >
-                    <BiLike id="like-button" />
+                    <TiArrowSortedUp id="like-button" />
                 </button>
+                <p>{ups}</p>
                 <button type="button" className="button" >
-                    <BiDislike id="dislike-button" />
+                    <TiArrowSortedDown id="dislike-button" />
                 </button>
             </div>
             <div className="post-body" >
