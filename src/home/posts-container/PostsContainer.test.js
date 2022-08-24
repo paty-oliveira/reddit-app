@@ -1204,12 +1204,14 @@ describe("extractPostsFromReddit", () => {
             }
         };
 
-        const expectedResult = {
-            title: ["undoubtedly the best photo I took at my sister's wedding"],
-            author: ["BabyGroot1337"],
-            time: [1659895802],
-            numberComments: [3042]
-        }
+        const expectedResult = [
+            {
+                title: "undoubtedly the best photo I took at my sister's wedding",
+                author: "BabyGroot1337",
+                time: 1659895802,
+                numberComments: 3042
+            }
+        ];
 
         const actualResult = extractPostsFromReddit(mockData);
 
@@ -3185,12 +3187,21 @@ describe("extractPostsFromReddit", () => {
             }
         };
 
-        const expectedResult = {
-            title: ["undoubtedly the best photo I took at my sister's wedding", "Interesting logic"],
-            author: ["BabyGroot1337", "Shadow474747"],
-            time: [1659895802, 1659898955],
-            numberComments: [3042, 3251]
-        }
+        const expectedResult = [
+            {
+                title: "undoubtedly the best photo I took at my sister's wedding",
+                author: "BabyGroot1337",
+                time: 1659895802,
+                numberComments: 3042
+            },
+            {
+                title:  "Interesting logic",
+                author: "Shadow474747",
+                time:  1659898955,
+                numberComments: 3251
+            }
+            ];
+
         const actualResult = extractPostsFromReddit(mockData);
 
         expect(actualResult).toEqual(expectedResult);
