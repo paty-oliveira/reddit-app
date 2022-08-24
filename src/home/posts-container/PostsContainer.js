@@ -17,6 +17,8 @@ export function PostsContainer() {
                         author={post.author}
                         time={post.time}
                         numberComments={post.numberComments}
+                        ups={post.ups}
+                        downs={post.downs}
                     />)
             }
         </div>
@@ -33,7 +35,9 @@ export function extractPostsFromReddit(payload) {
                 title: postsMetadata[key].data.title,
                 author: postsMetadata[key].data.author,
                 time: postsMetadata[key].data.created,
-                numberComments: postsMetadata[key].data.num_comments
+                numberComments: postsMetadata[key].data.num_comments,
+                ups: postsMetadata[key].data.ups,
+                downs: postsMetadata[key].data.downs
             })
     }
 

@@ -4,7 +4,7 @@ import { BiLike, BiDislike } from "react-icons/bi";
 
 export function Post(props) {
 
-    const { title, author, time, numberComments } = props;
+    const { title, author, time, numberComments, ups, downs } = props;
 
     return (
         <div className="post-item">

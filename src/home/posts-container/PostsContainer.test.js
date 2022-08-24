@@ -1209,7 +1209,9 @@ describe("extractPostsFromReddit", () => {
                 title: "undoubtedly the best photo I took at my sister's wedding",
                 author: "BabyGroot1337",
                 time: 1659895802,
-                numberComments: 3042
+                numberComments: 3042,
+                ups: 155805,
+                downs: 0
             }
         ];
 
@@ -3192,13 +3194,17 @@ describe("extractPostsFromReddit", () => {
                 title: "undoubtedly the best photo I took at my sister's wedding",
                 author: "BabyGroot1337",
                 time: 1659895802,
-                numberComments: 3042
+                numberComments: 3042,
+                ups: 155805,
+                downs: 0
             },
             {
                 title:  "Interesting logic",
                 author: "Shadow474747",
                 time:  1659898955,
-                numberComments: 3251
+                numberComments: 3251,
+                ups: 95637,
+                downs: 0
             }
             ];
 
