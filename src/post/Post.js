@@ -1,5 +1,6 @@
 import React from "react";
 import "./Post.css";
+import { BiLike, BiDislike } from "react-icons/bi";
 
 export function Post(props) {
 
@@ -8,8 +9,12 @@ export function Post(props) {
     return (
         <div className="post-item">
             <div className="buttons-container">
-                <button>Like</button>
-                <button>Dislike</button>
+                <button type="button" className="button" >
+                    <BiLike id="like-button" />
+                </button>
+                <button type="button" className="button" >
+                    <BiDislike id="dislike-button" />
+                </button>
             </div>
             <div className="post-body" >
                 <h3 className="post-title">{title}</h3>

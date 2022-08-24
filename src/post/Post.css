@@ -12,6 +12,22 @@
     flex-direction: column;
 }
 
+.button {
+    font-size: 35px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
+
+
+#like-button:hover {
+    color: green;
+}
+
+#dislike-button:hover {
+    color: red;
+}
+
 .post-body {
     display: flex;
     flex-direction: column;
