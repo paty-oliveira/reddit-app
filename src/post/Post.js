@@ -15,7 +15,11 @@ export function Post(props) {
                 <h3 className="post-title">{title}</h3>
                 <div className="post-details">
                     <p>Posted by {author}</p>
-                    <p>At {time} ago</p>
+                    <p>
+                        {
+                            new Date(time * 1000).toLocaleDateString()
+                        }
+                    </p>
                     <p>{numberComments} comments</p>
                 </div>
             </div>
