@@ -5,25 +5,19 @@ import { Post } from "../../post/Post";
 
 export function PostsContainer() {
 
-    const { title, author, time, numberComments } = extractPostsFromReddit(topPosts);
-    // I have a list of titles, authors, times and comments
-    // I want to create each component with one title, one author, etc
-
-    const posts = [];
-    for (let i= 1; i <= title.length; i++) {
-        posts.push(
-            <Post
-                title={title}
-                author={author}
-                time={time}
-                numberComments={numberComments}
-            />
-        )
-    }
+    const postsInfo = extractPostsFromReddit(topPosts);
 
     return (
         <div className="post-container">
-            {posts}
+            {
+                postsInfo.map(post =>
+                    <Post
+                        title={post.title}
+                        author={post.author}
+                        time={post.time}
+                        numberComments={post.numberComments}
+                    />)
+            }
         </div>
     )
 }
