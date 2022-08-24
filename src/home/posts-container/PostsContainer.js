@@ -9,6 +9,7 @@ export function PostsContainer() {
 
     return (
         <div className="post-container">
+            <h2>Posts</h2>
             {
                 postsInfo.map(post =>
                     <Post
