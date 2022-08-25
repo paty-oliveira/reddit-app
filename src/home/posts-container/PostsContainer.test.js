@@ -1211,7 +1211,8 @@ describe("extractPostsFromReddit", () => {
                 time: 1659895802,
                 numberComments: 3042,
                 ups: 155805,
-                downs: 0
+                downs: 0,
+                commentsUrl: "/r/funny/comments/wim1n1/undoubtedly_the_best_photo_i_took_at_my_sisters/"
             }
         ];
 
@@ -3196,7 +3197,8 @@ describe("extractPostsFromReddit", () => {
                 time: 1659895802,
                 numberComments: 3042,
                 ups: 155805,
-                downs: 0
+                downs: 0,
+                commentsUrl: "/r/funny/comments/wim1n1/undoubtedly_the_best_photo_i_took_at_my_sisters/"
             },
             {
                 title:  "Interesting logic",
@@ -3204,7 +3206,8 @@ describe("extractPostsFromReddit", () => {
                 time:  1659898955,
                 numberComments: 3251,
                 ups: 95637,
-                downs: 0
+                downs: 0,
+                commentsUrl: "/r/facepalm/comments/win92x/interesting_logic/"
             }
             ];
 

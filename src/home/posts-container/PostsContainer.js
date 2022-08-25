@@ -30,7 +30,8 @@ export function extractPostsFromReddit(payload) {
                 time: postsMetadata[key].data.created,
                 numberComments: postsMetadata[key].data.num_comments,
                 ups: postsMetadata[key].data.ups,
-                downs: postsMetadata[key].data.downs
+                downs: postsMetadata[key].data.downs,
+                commentsUrl: postsMetadata[key].data.permalink
             })
     }
 
