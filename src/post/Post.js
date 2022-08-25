@@ -21,8 +21,8 @@ export function Post(props) {
             <div className="post-body" >
                 <h3 className="post-title">{post.title}</h3>
                 <div className="post-details">
-                    <p className="">Posted by <b>{post.author}</b></p>
-                    <p className="=">At {moment.unix(post.time).fromNow()}</p>
+                    <p>Posted by <b>{post.author}</b></p>
+                    <p>At {moment.unix(post.time).fromNow()}</p>
                     <span className="post-comments-container">
                         <button type="button" className="comments-button" aria-label="Show comments">
                             <TiMessage />
