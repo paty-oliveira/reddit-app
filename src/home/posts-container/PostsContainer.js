@@ -11,15 +11,8 @@ export function PostsContainer() {
         <div className="post-container">
             <h2>Posts</h2>
             {
-                postsInfo.map(post =>
-                    <Post
-                        title={post.title}
-                        author={post.author}
-                        time={post.time}
-                        numberComments={post.numberComments}
-                        ups={post.ups}
-                        downs={post.downs}
-                    />)
+                postsInfo.map(
+                    post => <Post post={post} />)
             }
         </div>
     )
