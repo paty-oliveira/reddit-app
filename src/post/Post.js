@@ -1,6 +1,7 @@
 import React from "react";
 import "./Post.css";
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
+import { Comment} from "../comment/Comment";
 
 export function Post(props) {
 
@@ -26,7 +27,7 @@ export function Post(props) {
                             new Date(time * 1000).toLocaleDateString()
                         }
                     </p>
-                    <p>{numberComments} comments</p>
+                    <Comment numberComments={numberComments}/>
                 </div>
             </div>
         </div>
