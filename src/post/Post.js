@@ -20,7 +20,7 @@ export function Post(props) {
             <div className="post-body" >
                 <h3 className="post-title">{title}</h3>
                 <div className="post-details">
-                    <p>Posted by {author}</p>
+                    <p>Posted by <b>{author}</b></p>
                     <p>
                         {
                             new Date(time * 1000).toLocaleDateString()
