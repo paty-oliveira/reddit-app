@@ -34,3 +34,20 @@ export function Post(props) {
         </div>
     )
 }
+
+export function extractCommentsFromPost(payload) {
+    const comments = [];
+    const commentsMetadata = payload[1].data.children
+
+    commentsMetadata.map(
+        comment => comments.push(
+            {
+                author: comment.data.author,
+                body: comment.data.body,
+                createdAt: comment.data.created
+            }
+        )
+    )
+
+    return comments;
+}
