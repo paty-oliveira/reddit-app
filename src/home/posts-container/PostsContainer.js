@@ -22,18 +22,19 @@ export function extractPostsFromReddit(payload) {
     const posts = [];
     let postsMetadata = payload.data.children;
 
-    for (let key in postsMetadata) {
-        posts.push(
+    postsMetadata.map(
+        post => posts.push(
             {
-                title: postsMetadata[key].data.title,
-                author: postsMetadata[key].data.author,
-                time: postsMetadata[key].data.created,
-                numberComments: postsMetadata[key].data.num_comments,
-                ups: postsMetadata[key].data.ups,
-                downs: postsMetadata[key].data.downs,
-                commentsUrl: postsMetadata[key].data.permalink
-            })
-    }
+                title: post.data.title,
+                author: post.data.author,
+                time: post.data.created,
+                numberComments: post.data.num_comments,
+                ups: post.data.ups,
+                downs: post.data.downs,
+                commentsUrl: post.data.permalink
+            }
+        )
+    )
 
     return posts;
 }
