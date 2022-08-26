@@ -1169,7 +1169,8 @@ describe("extractCommentsFromPost", () => {
                 createdAt: 1659898737
             }
         ];
-        const actualResult = extractCommentsFromPost(mockData);
+        const url = "r/meirl/comments/wii02j/meirl/"
+        const actualResult = extractCommentsFromPost(mockData, url);
 
         expect(actualResult).toEqual(expectedData);
     });
@@ -2270,7 +2271,8 @@ describe("extractCommentsFromPost", () => {
                 createdAt: 1659898737
             }
         ];
-        const actualResult = extractCommentsFromPost(mockData);
+        const url = "r/meirl/comments/wii02j/meirl/"
+        const actualResult = extractCommentsFromPost(mockData, url);
 
         expect(actualResult).toEqual(expectedData);
     });

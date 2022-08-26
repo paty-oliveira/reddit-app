@@ -2,10 +2,13 @@ import React from "react";
 import "./Post.css";
 import { TiArrowSortedUp, TiArrowSortedDown, TiMessage } from "react-icons/ti";
 import moment from "moment";
+import { commentsFromMeirlId } from "../mocks/reddit_comments";
 
 export function Post(props) {
 
     const post = props.post;
+    const url = "r/meirl/comments/wii02j/meirl/"; // To be replaced by post.permalink when Reddit API will be ready
+    const comments = extractCommentsFromPost(commentsFromMeirlId, url);
 
     return (
         <div className="post-item">
@@ -35,7 +38,7 @@ export function Post(props) {
     )
 }
 
-export function extractCommentsFromPost(payload) {
+export function extractCommentsFromPost(payload, url) {
     const comments = [];
     const commentsMetadata = payload[1].data.children
 
