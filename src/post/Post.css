@@ -73,3 +73,8 @@
     border-radius: 9px;
     font-size: 35px;
 }
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+}

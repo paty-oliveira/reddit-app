@@ -3,12 +3,26 @@ import "./Post.css";
 import { TiArrowSortedUp, TiArrowSortedDown, TiMessage } from "react-icons/ti";
 import moment from "moment";
 import { commentsFromMeirlId } from "../mocks/reddit_comments";
+import { Comment } from "../comment/Comment";
 
 export function Post(props) {
 
     const post = props.post;
     const url = "r/meirl/comments/wii02j/meirl/"; // To be replaced by post.permalink when Reddit API will be ready
     const comments = extractCommentsFromPost(commentsFromMeirlId, url);
+    const showingComments = false;
+
+    const renderComments = () => {
+        if (showingComments) {
+            return (
+                <div className="comments-container">
+                    {comments.map((comment) => (<Comment comment={comment}/>))}
+                </div>
+            )
+        }
+
+        return null;
+    }
 
     return (
         <div className="post-item">
@@ -32,7 +46,9 @@ export function Post(props) {
                         </button>
                         <p id="comment-item">{post.numberComments}</p>
                     </span>
+
                 </div>
+                {renderComments()}
             </div>
         </div>
     )
