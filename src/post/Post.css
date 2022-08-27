@@ -1,15 +1,13 @@
 .post-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
     margin-bottom: 20px;
     border-bottom: black solid;
     width: 100%;
 }
 
 .buttons-container {
-    display: flex;
-    flex-direction: column;
+    padding-left: 20px;
 }
 
 .button {

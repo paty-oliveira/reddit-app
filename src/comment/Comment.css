@@ -1,7 +1,7 @@
 .comment-item {
     display: flex;
     flex-direction: column;
-    border: black solid;
+    border-top: black solid;
     margin: 5px;
 }
 .comment-content {

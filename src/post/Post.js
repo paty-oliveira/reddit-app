@@ -10,7 +10,7 @@ export function Post(props) {
     const post = props.post;
     const url = "r/meirl/comments/wii02j/meirl/"; // To be replaced by post.permalink when Reddit API will be ready
     const comments = extractCommentsFromPost(commentsFromMeirlId, url);
-    const showingComments = false;
+    const showingComments = true;
 
     const renderComments = () => {
         if (showingComments) {
