@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from "react";
 import "./SubredditContainer.css";
 import { Subreddit } from "../../subreddit/Subreddit";
-import { getSubredditsTitles } from "../../api/reddit";
+import { getSubreddits } from "../../api/reddit";
 
 export function SubredditContainer() {
 
-    const [titles, setTitles] = useState([]);
+    const [subreddits, setSubreddits] = useState([]);
 
     useEffect(() => {
-        getSubredditsTitles()
-            .then(titles => {
-                setTitles(titles)
+        getSubreddits()
+            .then(subreddits => {
+                setSubreddits(subreddits)
             })
     }, [])
 
@@ -19,8 +19,8 @@ export function SubredditContainer() {
             <h2>Subreddits</h2>
             <div className="subcategory-container">
                 {
-                    titles
-                    .map(title => <Subreddit title={title} />)
+                    subreddits
+                    .map(subreddit => <Subreddit title={subreddit.title} />)
                 }
             </div>
         </div>
