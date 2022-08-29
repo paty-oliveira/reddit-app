@@ -4,6 +4,7 @@ import { TiArrowSortedUp, TiArrowSortedDown, TiMessage } from "react-icons/ti";
 import moment from "moment";
 import { commentsFromMeirlId } from "../mocks/reddit_comments";
 import { Comment } from "../comment/Comment";
+import {extractCommentsFromPost} from "../utils/utils";
 
 export function Post(props) {
 
@@ -68,21 +69,4 @@ export function Post(props) {
             </div>
         </div>
     )
-}
-
-export function extractCommentsFromPost(payload, url) {
-    const comments = [];
-    const commentsMetadata = payload[1].data.children
-
-    commentsMetadata.map(
-        comment => comments.push(
-            {
-                author: comment.data.author,
-                body: comment.data.body,
-                createdAt: comment.data.created
-            }
-        )
-    )
-
-    return comments;
 }
