@@ -10,7 +10,7 @@ export function Post(props) {
     const post = props.post;
     const [upsCount, setUpsCount] = useState(post.ups);
     const [postComments, setPostComments] = useState([]);
-    const showingComments = false;
+    const [showComments, setShowComments] = useState(false);
 
     useEffect(() => {
         getPostComments(post.commentsUrl)
@@ -18,8 +18,20 @@ export function Post(props) {
                 setPostComments(comments))
     }, [])
 
+    const handleBVoteUp = event => {
+        setUpsCount(upsCount + 1);
+    }
+
+    const handleVoteDown = event => {
+        setUpsCount(upsCount - 1);
+    }
+
+    const handleCommentsButtonClick = event => {
+        setShowComments(!showComments);
+    }
+
     const renderComments = () => {
-        if (showingComments) {
+        if (showComments) {
             return (
                 <div className="comments-container">
                     {postComments.map((comment) => (<Comment comment={comment}/>))}
@@ -28,14 +40,6 @@ export function Post(props) {
         }
 
         return null;
-    }
-
-    const handleBVoteUp = event => {
-        setUpsCount(upsCount + 1);
-    }
-
-    const handleVoteDown = event => {
-        setUpsCount(upsCount - 1);
     }
 
     return (
@@ -61,12 +65,15 @@ export function Post(props) {
                     <p>Posted by <b>{post.author}</b></p>
                     <p>At {moment.unix(post.time).fromNow()}</p>
                     <span className="post-comments-container">
-                        <button type="button" className="comments-button" aria-label="Show comments">
+                        <button
+                            type="button"
+                            className="comments-button"
+                            aria-label="Show comments"
+                            onClick={handleCommentsButtonClick}>
                             <TiMessage />
                         </button>
                         <p id="comment-item">{post.numberComments}</p>
                     </span>
-
                 </div>
                 {renderComments()}
             </div>
