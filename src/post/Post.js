@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Post.css";
 import { TiArrowSortedUp, TiArrowSortedDown, TiMessage } from "react-icons/ti";
 import moment from "moment";
@@ -8,9 +8,11 @@ import { Comment } from "../comment/Comment";
 export function Post(props) {
 
     const post = props.post;
+    const [upsCount, setUpsCount] = useState(post.ups);
+
     const url = "r/meirl/comments/wii02j/meirl/"; // To be replaced by post.permalink when Reddit API will be ready
     const comments = extractCommentsFromPost(commentsFromMeirlId, url);
-    const showingComments = true;
+    const showingComments = false;
 
     const renderComments = () => {
         if (showingComments) {
@@ -24,14 +26,28 @@ export function Post(props) {
         return null;
     }
 
+    const handleBVoteUp = event => {
+        setUpsCount(upsCount + 1);
+    }
+
+    const handleVoteDown = event => {
+        setUpsCount(upsCount - 1);
+    }
+
     return (
         <div className="post-item">
             <div className="buttons-container">
-                <button type="button" className="button" >
+                <button
+                    type="button"
+                    className="button"
+                    onClick={handleBVoteUp}>
                     <TiArrowSortedUp id="like-button" />
                 </button>
-                <p>{post.ups}</p>
-                <button type="button" className="button" >
+                <p>{upsCount}</p>
+                <button
+                    type="button"
+                    className="button"
+                    onClick={handleVoteDown}>
                     <TiArrowSortedDown id="dislike-button" />
                 </button>
             </div>
