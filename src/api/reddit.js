@@ -15,8 +15,8 @@ export async function getSubreddits() {
     }
 }
 
-export async function getPosts() {
-    const postsEndpoint = rootEndpoint + "r/all/top/.json";
+export async function getPostsFromSubreddit(subreddit) {
+    const postsEndpoint = rootEndpoint + subreddit + ".json";
     try {
         const response = await fetch(postsEndpoint);
         const payload = await response.json();
