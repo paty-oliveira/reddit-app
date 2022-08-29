@@ -1,4 +1,4 @@
-import { extractSubreddits, extractPostsFromReddit, extractCommentsFromPost } from "../utils/utils";
+import { extractSubreddits, extractPostsFromReddit, extractCommentsFromPost } from "./utils";
 
 const rootEndpoint = "https://www.reddit.com/"
 
