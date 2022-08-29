@@ -1,18 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./PostsContainer.css";
-import { topPosts } from "../../mocks/reddit_top_posts";
 import { Post } from "../../post/Post";
-import {extractPostsFromReddit} from "../../utils/utils";
+import { getPosts } from "../../api/reddit";
 
 export function PostsContainer() {
 
-    const postsInfo = extractPostsFromReddit(topPosts);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        getPosts()
+            .then(posts =>
+                setPosts(posts)
+            )
+    }, [])
 
     return (
         <div className="post-container">
             <h2>Posts</h2>
             {
-                postsInfo.map(
+                posts.map(
                     post => <Post post={post} />)
             }
         </div>
