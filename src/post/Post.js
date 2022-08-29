@@ -1,25 +1,28 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Post.css";
 import { TiArrowSortedUp, TiArrowSortedDown, TiMessage } from "react-icons/ti";
 import moment from "moment";
-import { commentsFromMeirlId } from "../mocks/reddit_comments";
 import { Comment } from "../comment/Comment";
-import {extractCommentsFromPost} from "../utils/utils";
+import { getPostComments } from "../api/reddit";
 
 export function Post(props) {
 
     const post = props.post;
     const [upsCount, setUpsCount] = useState(post.ups);
-
-    const url = "r/meirl/comments/wii02j/meirl/"; // To be replaced by post.permalink when Reddit API will be ready
-    const comments = extractCommentsFromPost(commentsFromMeirlId, url);
+    const [postComments, setPostComments] = useState([]);
     const showingComments = false;
+
+    useEffect(() => {
+        getPostComments(post.commentsUrl)
+            .then(comments =>
+                setPostComments(comments))
+    }, [])
 
     const renderComments = () => {
         if (showingComments) {
             return (
                 <div className="comments-container">
-                    {comments.map((comment) => (<Comment comment={comment}/>))}
+                    {postComments.map((comment) => (<Comment comment={comment}/>))}
                 </div>
             )
         }
