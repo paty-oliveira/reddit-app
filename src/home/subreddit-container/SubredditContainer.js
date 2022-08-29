@@ -1,24 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./SubredditContainer.css";
-import { subreddits } from "../../mocks/reddit_list_subredits";
 import { Subreddit } from "../../subreddit/Subreddit";
+import { getSubredditsTitles } from "../../api/reddit";
 
 export function SubredditContainer() {
-    const subcategoryTitle = extractSubRedditsTitle(subreddits);
+
+    const [titles, setTitles] = useState([]);
+
+    useEffect(() => {
+        getSubredditsTitles()
+            .then(titles => {
+                setTitles(titles)
+            })
+    }, [])
 
     return (
         <div className="subreddit-container">
             <h2>Subreddits</h2>
             <div className="subcategory-container">
                 {
-                    subcategoryTitle
+                    titles
                     .map(title => <Subreddit title={title} />)
                 }
             </div>
         </div>
     )
-}
-
-export function extractSubRedditsTitle(payload) {
-    return payload.data.children.map(subreddit => subreddit.data.title);
 }
