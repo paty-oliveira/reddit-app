@@ -18,7 +18,7 @@ export function Post(props) {
                 setPostComments(comments))
     }, [])
 
-    const handleBVoteUp = event => {
+    const handleVoteUp = event => {
         setUpsCount(upsCount + 1);
     }
 
@@ -48,7 +48,7 @@ export function Post(props) {
                 <button
                     type="button"
                     className="button"
-                    onClick={handleBVoteUp}>
+                    onClick={handleVoteUp}>
                     <TiArrowSortedUp id="like-button" />
                 </button>
                 <p>{upsCount}</p>
