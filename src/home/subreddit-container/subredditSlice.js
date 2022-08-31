@@ -7,7 +7,7 @@ const initialState = {
     isLoading: false,
 }
 
-export const subredditsSlice = createSlice({
+const options = {
     name: "subreddits",
     initialState,
     reducers: {
@@ -24,14 +24,9 @@ export const subredditsSlice = createSlice({
             state.error = true;
         },
     },
-});
+}
 
-export const {
-    getSubredditsFailed,
-    getSubredditsSuccess,
-    startGetSubreddits,
-} = subredditsSlice.actions;
-
+export const subredditsSlice = createSlice(options);
 
 // This is a Redux Thunk that gets subreddits.
 export const fetchSubreddits = () => async (dispatch) => {
@@ -44,4 +39,10 @@ export const fetchSubreddits = () => async (dispatch) => {
     }
 };
 
-export const selectSubreddits = (state) => state.subreddits.subreddits;
+export const {
+    getSubredditsFailed,
+    getSubredditsSuccess,
+    startGetSubreddits,
+} = subredditsSlice.actions;
+
+//export const selectSubreddits = (state) => state.subreddits.subreddits;
