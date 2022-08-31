@@ -1,6 +1,11 @@
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import { fetchSubreddits } from "./subredditSlice";
+import reducer, {
+    fetchSubreddits,
+    getSubredditsFailed,
+    getSubredditsSuccess,
+    startGetSubreddits
+} from "./subredditSlice";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -35,5 +40,112 @@ describe("fetchSubreddits thunk actions",  () => {
                     .map(action => action.type)
                 expect(actualActions).toEqual(expectedActions)
             })
+    });
+})
+
+describe("subredditsSlice reducer", () => {
+
+    it('should return default state', function () {
+        const currentState = reducer(undefined, {});
+        const expectedState = {
+            subreddits: [],
+            error: false,
+            isLoading: false,
+        }
+
+        expect(currentState).toEqual(expectedState)
+    });
+
+    it('should update state when fetchSubreddits call start', function () {
+        const initialState = {
+            subreddits: [],
+            error: false,
+            isLoading: false,
+        }
+
+        const expectedState = {
+            subreddits: [],
+            error: false,
+            isLoading: true,
+        }
+
+        const actualState = reducer(initialState, startGetSubreddits)
+
+        expect(actualState).toEqual(expectedState)
+    });
+
+    it('should update the state when fetchSubreddits is successfully', function () {
+        const initialState = {
+            subreddits: [],
+            error: false,
+            isLoading: true,
+        }
+
+        const payloadFromApi = [
+            {
+                "title": "subreddit1",
+                "createdAt": 1223232323
+            },
+        ]
+
+        const expectedState = {
+            subreddits: payloadFromApi,
+            error: false,
+            isLoading: false
+        }
+
+        const actualState = reducer(initialState, getSubredditsSuccess(payloadFromApi))
+
+        expect(actualState).toEqual(expectedState)
+
+    });
+
+    it('should update existing state when fetchSubreddits is successfully ', function () {
+        const initialState = {
+            subreddits: [
+                {
+                    "title": "subreddit1",
+                    "createdAt": 1223232323
+                },
+            ],
+            error: false,
+            isLoading: true,
+        }
+
+        const payloadFromApi = [
+            {
+                "title": "subreddit2",
+                "createdAt": 232399003
+            }
+        ]
+
+        const expectedState = {
+            subreddits: payloadFromApi,
+            error: false,
+            isLoading: false
+        }
+
+        const actualState = reducer(initialState, getSubredditsSuccess(payloadFromApi));
+
+        expect(actualState).toEqual(expectedState)
+
+    });
+
+    it('should update state when fetchSubreddits fails', function () {
+        const initialState = {
+            subreddits: [],
+            error: false,
+            isLoading: false,
+        }
+
+        const expectedState = {
+            subreddits: [],
+            error: true,
+            isLoading: false,
+        }
+
+        const actualState = reducer(initialState, getSubredditsFailed)
+
+        expect(actualState).toEqual(expectedState)
     });
 })
