@@ -16,7 +16,8 @@ export function Post(props) {
         getPostComments(post.commentsUrl)
             .then(comments =>
                 setPostComments(comments))
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [postComments])
 
     const handleVoteUp = event => {
         setUpsCount(upsCount + 1);
