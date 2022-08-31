@@ -4,7 +4,8 @@ import reducer, {
     fetchSubreddits,
     getSubredditsFailed,
     getSubredditsSuccess,
-    startGetSubreddits
+    startGetSubreddits,
+    selectSubreddits
 } from "./subredditSlice";
 
 const middlewares = [thunk];
@@ -51,9 +52,9 @@ describe("subredditsSlice reducer", () => {
             subreddits: [],
             error: false,
             isLoading: false,
-        }
+        };
 
-        expect(currentState).toEqual(expectedState)
+        expect(currentState).toEqual(expectedState);
     });
 
     it('should update state when fetchSubreddits call start', function () {
@@ -61,17 +62,17 @@ describe("subredditsSlice reducer", () => {
             subreddits: [],
             error: false,
             isLoading: false,
-        }
+        };
 
         const expectedState = {
             subreddits: [],
             error: false,
             isLoading: true,
-        }
+        };
 
-        const actualState = reducer(initialState, startGetSubreddits)
+        const actualState = reducer(initialState, startGetSubreddits);
 
-        expect(actualState).toEqual(expectedState)
+        expect(actualState).toEqual(expectedState);
     });
 
     it('should update the state when fetchSubreddits is successfully', function () {
@@ -79,24 +80,24 @@ describe("subredditsSlice reducer", () => {
             subreddits: [],
             error: false,
             isLoading: true,
-        }
+        };
 
         const payloadFromApi = [
             {
                 "title": "subreddit1",
                 "createdAt": 1223232323
             },
-        ]
+        ];
 
         const expectedState = {
             subreddits: payloadFromApi,
             error: false,
             isLoading: false
-        }
+        };
 
-        const actualState = reducer(initialState, getSubredditsSuccess(payloadFromApi))
+        const actualState = reducer(initialState, getSubredditsSuccess(payloadFromApi));
 
-        expect(actualState).toEqual(expectedState)
+        expect(actualState).toEqual(expectedState);
 
     });
 
@@ -110,24 +111,24 @@ describe("subredditsSlice reducer", () => {
             ],
             error: false,
             isLoading: true,
-        }
+        };
 
         const payloadFromApi = [
             {
                 "title": "subreddit2",
                 "createdAt": 232399003
             }
-        ]
+        ];
 
         const expectedState = {
             subreddits: payloadFromApi,
             error: false,
             isLoading: false
-        }
+        };
 
         const actualState = reducer(initialState, getSubredditsSuccess(payloadFromApi));
 
-        expect(actualState).toEqual(expectedState)
+        expect(actualState).toEqual(expectedState);
 
     });
 
@@ -136,16 +137,60 @@ describe("subredditsSlice reducer", () => {
             subreddits: [],
             error: false,
             isLoading: false,
-        }
+        };
 
         const expectedState = {
             subreddits: [],
             error: true,
             isLoading: false,
+        };
+
+        const actualState = reducer(initialState, getSubredditsFailed);
+
+        expect(actualState).toEqual(expectedState);
+    });
+})
+
+describe("selectSubreddits selector", () => {
+    it('should return an empty list of subreddits from the store', function () {
+        const mockStoreState = {
+            subreddits: {
+                subreddits: [],
+                error: false,
+                isLoading: false,
+            },
+        };
+
+        const expectedResult = [];
+
+        const actualResult = selectSubreddits(mockStoreState);
+
+        expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('should return the subreddit from the store', function () {
+        const mockStoreState = {
+            subreddits: {
+                subreddits: [
+                    {
+                        "title": "example1",
+                        "createdAt": 123232323
+                    }
+                ],
+                error: false,
+                isLoading: false,
+            },
         }
 
-        const actualState = reducer(initialState, getSubredditsFailed)
+        const expectedResult = [
+            {
+                "title": "example1",
+                "createdAt": 123232323
+            }
+        ];
 
-        expect(actualState).toEqual(expectedState)
+        const actualResult = selectSubreddits(mockStoreState);
+
+        expect(actualResult).toEqual(expectedResult);
     });
 })
