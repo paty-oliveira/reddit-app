@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import "./SubredditContainer.css";
 import { Subreddit } from "../../subreddit/Subreddit";
-import { getSubreddits } from "../../api/reddit";
+import { useSelector, useDispatch } from "react-redux";
+import { selectSubreddits, fetchSubreddits} from "./subredditSlice";
 
 
 export function SubredditContainer() {
 
-    const [subreddits, setSubreddits] = useState([]);
+    const subreddits = useSelector(selectSubreddits);
+    const dispatch = useDispatch();
 
+    // fetchSubreddits thunk is the middleware between eventHandler and the store
     useEffect(() => {
-        getSubreddits()
-            .then(subreddits => {
-                setSubreddits(subreddits)
-            })
-    }, [])
+        dispatch(fetchSubreddits())
+    }, [dispatch])
 
     return (
         <div className="subreddit-container">
