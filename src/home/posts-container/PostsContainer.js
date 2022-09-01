@@ -7,6 +7,9 @@ export function PostsContainer() {
 
     const [posts, setPosts] = useState([]);
     const subredditUrl = "r/Home/";
+    // get url based on event handler
+    // When I click on subreddit, I got the url from subreddit using a selector
+
 
     useEffect(() => {
         getPostsFromSubreddit(subredditUrl)

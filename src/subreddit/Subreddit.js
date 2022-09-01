@@ -6,7 +6,11 @@ export function Subreddit({title}) {
 
     return (
         <div className="subreddit-item" >
-            <p data-testid="test-title-props">{title}</p>
+            <button
+                type="button"
+                className="subreddit-button"
+                data-testid="test-title-props">{title}
+            </button>
         </div>
     )
 }

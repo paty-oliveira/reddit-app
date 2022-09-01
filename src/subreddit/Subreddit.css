@@ -4,3 +4,11 @@
     align-items: flex-start;
     border-bottom: black solid;
 }
+
+.subreddit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 15px;
+}
