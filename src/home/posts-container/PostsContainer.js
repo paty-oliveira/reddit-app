@@ -2,14 +2,13 @@ import React, {useEffect, useState} from "react";
 import "./PostsContainer.css";
 import { Post } from "../../post/Post";
 import { getPostsFromSubreddit } from "../../api/reddit";
+import { useSelector } from "react-redux";
+import { selectSubredditUrl } from "./postsSlice";
 
 export function PostsContainer() {
 
     const [posts, setPosts] = useState([]);
-    const subredditUrl = "r/Home/";
-    // get url based on event handler
-    // When I click on subreddit, I got the url from subreddit using a selector
-
+    const subredditUrl = useSelector(selectSubredditUrl);
 
     useEffect(() => {
         getPostsFromSubreddit(subredditUrl)
