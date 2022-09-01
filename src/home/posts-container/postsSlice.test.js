@@ -1,4 +1,4 @@
-import reducer, { postsSlice, setSubredditSelected } from "./postsSlice";
+import reducer, { postsSlice, setSubredditSelected, selectSubredditUrl } from "./postsSlice";
 
 describe("postsSlice reducer", () => {
 
@@ -8,7 +8,7 @@ describe("postsSlice reducer", () => {
             posts: [],
             subredditSelected: "r/Home/",
             error: false,
-            loading: false
+            isLoading: false
         };
 
         expect(currentState).toEqual(expectedState)
@@ -19,7 +19,7 @@ describe("postsSlice reducer", () => {
             posts: [],
             subredditSelected: "r/Home/",
             error: false,
-            loading: false
+            isLoading: false
         };
 
         const payload = "r/pics/"
@@ -28,7 +28,7 @@ describe("postsSlice reducer", () => {
             posts: [],
             subredditSelected: payload,
             error: false,
-            loading: false
+            isLoading: false
         };
 
         const actualState = reducer(initialState, setSubredditSelected(payload))
@@ -36,3 +36,43 @@ describe("postsSlice reducer", () => {
         expect(actualState).toEqual(expectedState)
     });
 })
+
+describe("setSubredditSelected selector", () => {
+    it('should return the subreddit URL from the store ', function () {
+        const mockStoreState = {
+            subreddits: {
+                subreddits: [],
+                error: false,
+                isLoading: false,
+            },
+            posts: {
+                posts: [],
+                subredditSelected: "r/Home/",
+                error: false,
+                isLoading: false
+            }
+        };
+
+        const expectedResult = "r/Home/";
+
+        const actualResult = selectSubredditUrl(mockStoreState);
+
+        expect(actualResult).toEqual(expectedResult);
+    });
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

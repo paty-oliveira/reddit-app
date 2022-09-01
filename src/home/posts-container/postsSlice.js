@@ -4,7 +4,7 @@ const initialState = {
     posts: [],
     subredditSelected: "r/Home/",
     error: false,
-    loading: false
+    isLoading: false
 };
 
 const options = {
@@ -18,6 +18,8 @@ const options = {
 }
 
 export const postsSlice = createSlice(options);
+
+export const selectSubredditUrl = (state) => state.posts.subredditSelected;
 
 export const { setSubredditSelected } = postsSlice.actions;
 
