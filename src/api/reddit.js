@@ -11,7 +11,7 @@ export async function getSubreddits() {
         return extractSubreddits(payload);
 
     } catch (error) {
-        alert("Error while retrieving subreddits: " + error);
+        alert("Error while retrieving subreddits: " + error.message);
     }
 }
 
@@ -24,7 +24,7 @@ export async function getPostsFromSubreddit(subreddit) {
         return extractPostsFromReddit(payload);
 
     } catch (error) {
-        alert("Error while retrieving top posts: " + error);
+        alert("Error while retrieving top posts: " + error.message);
     }
 }
 
@@ -37,6 +37,6 @@ export async function getPostComments(permalink) {
         return extractCommentsFromPost(payload);
 
     } catch (error) {
-        alert("Error while retrieving comments from post: " + error);
+        alert("Error while retrieving comments from post: " + error.message);
     }
 }
