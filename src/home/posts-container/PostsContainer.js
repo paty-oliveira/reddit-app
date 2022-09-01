@@ -15,6 +15,7 @@ export function PostsContainer() {
             .then(posts =>
                 setPosts(posts)
             )
+        // eslint-disable-next-line
     }, [])
 
     return (

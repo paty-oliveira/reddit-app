@@ -1,4 +1,6 @@
-import reducer, { postsSlice, setSubredditSelected, selectSubredditUrl } from "./postsSlice";
+import reducer, { postsSlice, setSubredditSelected, selectSubredditUrl, fetchPostsFromSubreddit } from "./postsSlice";
+import thunk from "redux-thunk";
+import configureMockStore from "redux-mock-store";
 
 describe("postsSlice reducer", () => {
 
@@ -62,7 +64,44 @@ describe("setSubredditSelected selector", () => {
 })
 
 
+describe("fetchPostsFromSubreddit thunk", () =>{
+    const middlewares = [thunk];
+    const mockStore = configureMockStore(middlewares);
 
+    it('should fire startGetPostsFromSubreddit and getPostsFromSubredditSuccess actions in case of success', function () {
+        const expectedActions = ["posts/startGetPostsFromSubreddit", "posts/getPostsFromSubredditSuccess"];
+
+        // Mock the store
+        const store = mockStore({});
+
+        const url = "/r/Home";
+
+        // When fetchPostsFromSubreddit thunk is dispatched
+        return store.dispatch(fetchPostsFromSubreddit(url))
+            .then(() => {
+                const actualActions = store.getActions()
+                    .map(action => action.type)
+                expect(actualActions).toEqual(expectedActions)
+            })
+    });
+
+    it('should fire getPostsFromSubredditFailure action in case of failure', function () {
+        const expectedActions = ["posts/getPostsFromSubredditFailure"];
+
+        // Mock the store
+        const store = mockStore({});
+
+        const url = "/r/Home";
+
+        // When fetchPostsFromSubreddit thunk is dispatched
+        return store.dispatch(fetchPostsFromSubreddit(url))
+            .catch(() => {
+                const actualActions = store.getActions()
+                    .map(action => action.type)
+                expect(actualActions).toEqual(expectedActions)
+            })
+    });
+})
 
 
 
