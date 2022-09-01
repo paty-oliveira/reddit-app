@@ -21,7 +21,7 @@ export function SubredditContainer() {
             <div className="subcategory-container">
                 {
                     subreddits
-                    .map(subreddit => <Subreddit title={subreddit.title} />)
+                    .map(subreddit => <Subreddit title={subreddit.title} url={subreddit.url} />)
                 }
             </div>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./Subreddit.css";
 
 
-export function Subreddit({title}) {
+export function Subreddit({title, url}) {
 
     return (
         <div className="subreddit-item" >
