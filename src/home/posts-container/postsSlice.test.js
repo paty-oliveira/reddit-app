@@ -1,4 +1,9 @@
-import reducer, { postsSlice, setSubredditSelected, selectSubredditUrl, fetchPostsFromSubreddit } from "./postsSlice";
+import reducer, {
+    setSubredditSelected,
+    selectSubredditUrl,
+    fetchPostsFromSubreddit,
+    startGetPostsFromSubreddit, getPostsFromSubredditSuccess, getPostsFromSubredditFailure
+} from "./postsSlice";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
@@ -37,6 +42,74 @@ describe("postsSlice reducer", () => {
 
         expect(actualState).toEqual(expectedState)
     });
+
+    it('should update state when fetchPostsFromSubreddit call starts', function () {
+        const initialState = {
+            posts: [],
+            subredditSelected: "r/Home/",
+            error: false,
+            isLoading: false
+        };
+
+        const expectedState = {
+            posts: [],
+            subredditSelected: "r/Home/",
+            error: false,
+            isLoading: true
+        };
+
+        const actualState = reducer(initialState, startGetPostsFromSubreddit);
+
+        expect(actualState).toEqual(expectedState)
+    });
+
+    it('should update the state when fetchPostsFromSubreddit is successfully', function () {
+        const initialState = {
+            posts: [],
+            subredditSelected: "r/Home/",
+            error: false,
+            isLoading: false
+        };
+
+        const payloadFromApi = [
+            {
+                "post": "example",
+                "body": "This is my test post"
+            }
+        ]
+
+        const expectedState = {
+            posts: payloadFromApi,
+            subredditSelected: "r/Home/",
+            error: false,
+            isLoading: false
+        };
+
+        const actualState = reducer(initialState, getPostsFromSubredditSuccess(payloadFromApi));
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it('should update state when fetchPostsFromSubreddit fails', function () {
+        const initialState = {
+            posts: [],
+            subredditSelected: "r/Home/",
+            error: false,
+            isLoading: false
+        };
+
+        const expectedState = {
+            posts: [],
+            subredditSelected: "r/Home/",
+            error: true,
+            isLoading: false
+        };
+
+        const actualState = reducer(initialState, getPostsFromSubredditFailure);
+
+        expect(actualState).toEqual(expectedState);
+    });
+
 })
 
 describe("setSubredditSelected selector", () => {

@@ -17,13 +17,13 @@ const options = {
             state.subredditSelected = action.payload;
         },
         startGetPostsFromSubreddit(state){
-
+            state.isLoading = true;
         },
         getPostsFromSubredditSuccess(state, action) {
-
+            state.posts = action.payload;
         },
         getPostsFromSubredditFailure(state) {
-
+            state.error = true;
         }
     }
 }
