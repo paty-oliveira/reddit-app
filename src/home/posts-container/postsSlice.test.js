@@ -2,7 +2,10 @@ import reducer, {
     setSubredditSelected,
     selectSubredditUrl,
     fetchPostsFromSubreddit,
-    startGetPostsFromSubreddit, getPostsFromSubredditSuccess, getPostsFromSubredditFailure
+    startGetPostsFromSubreddit,
+    getPostsFromSubredditSuccess,
+    getPostsFromSubredditFailure,
+    selectPostsFromSubreddit
 } from "./postsSlice";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
@@ -131,6 +134,43 @@ describe("setSubredditSelected selector", () => {
         const expectedResult = "r/Home/";
 
         const actualResult = selectSubredditUrl(mockStoreState);
+
+        expect(actualResult).toEqual(expectedResult);
+    });
+})
+
+describe("selectPostsFromSubreddit selector", () => {
+
+    it('should return the posts from the store', function () {
+        const mockStoreState = {
+            subreddits: {
+                subreddits: [],
+                error: false,
+                isLoading: false,
+            },
+            posts: {
+                posts: [
+                    {
+                        "post": "post1",
+                        "createdAt": 123232323
+
+                    },
+                ],
+                subredditSelected: "r/Home/",
+                error: false,
+                isLoading: false
+            }
+        };
+
+        const expectedResult = [
+            {
+                "post": "post1",
+                "createdAt": 123232323
+
+            },
+        ]
+
+        const actualResult = selectPostsFromSubreddit(mockStoreState);
 
         expect(actualResult).toEqual(expectedResult);
     });
