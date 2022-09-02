@@ -1,22 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import "./PostsContainer.css";
 import { Post } from "../../post/Post";
-import { getPostsFromSubreddit } from "../../api/reddit";
-import { useSelector } from "react-redux";
-import { selectSubredditUrl } from "./postsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectSubredditUrl, fetchPostsFromSubreddit, selectPostsFromSubreddit } from "./postsSlice";
 
 export function PostsContainer() {
 
-    const [posts, setPosts] = useState([]);
+    const dispatch = useDispatch();
+    const posts = useSelector(selectPostsFromSubreddit);
     const subredditUrl = useSelector(selectSubredditUrl);
 
     useEffect(() => {
-        getPostsFromSubreddit(subredditUrl)
-            .then(posts =>
-                setPosts(posts)
-            )
-        // eslint-disable-next-line
-    }, [])
+        dispatch(fetchPostsFromSubreddit(subredditUrl))
+    }, [dispatch, subredditUrl])
 
     return (
         <div className="post-container">
