@@ -49,6 +49,8 @@ export const selectSubredditUrl = (state) => state.posts.subredditSelected;
 
 export const selectPostsFromSubreddit = (state) => state.posts.posts;
 
+export const selectSearchTerm = (state) => state.posts.searchTerm;
+
 export const {
     setSubredditSelected,
     startGetPostsFromSubreddit,

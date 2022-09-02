@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import "./SearchBar.css";
+import {useDispatch, useSelector} from "react-redux";
+import { setSearchTerm, selectSearchTerm} from "../home/posts-container/postsSlice";
 
 export function SearchBar () {
 
-    const [searchTerm, setSearchTerm] = useState("");
+    const searchTerm = useSelector(selectSearchTerm);
+    const dispatch = useDispatch();
 
     const handleSearchTermChange = event => {
-        setSearchTerm(event.target.value);
+        dispatch(setSearchTerm(event.target.value))
     }
 
     return (

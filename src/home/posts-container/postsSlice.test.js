@@ -6,7 +6,8 @@ import reducer, {
     getPostsFromSubredditSuccess,
     getPostsFromSubredditFailure,
     selectPostsFromSubreddit,
-    setSearchTerm
+    setSearchTerm,
+    selectSearchTerm
 } from "./postsSlice";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
@@ -209,6 +210,32 @@ describe("selectPostsFromSubreddit selector", () => {
         const actualResult = selectPostsFromSubreddit(mockStoreState);
 
         expect(actualResult).toEqual(expectedResult);
+    });
+})
+
+describe("selectSearchTerm selector", () => {
+    it('should return the search term from the store', function () {
+        const mockStoreState = {
+            subreddits: {
+                subreddits: [],
+                error: false,
+                isLoading: false,
+            },
+            posts: {
+                posts: [],
+                subredditSelected: "r/Home/",
+                searchTerm: "Post 1",
+                error: false,
+                isLoading: false
+            }
+        };
+
+        const expectedResult = "Post 1"
+
+        const actualResult = selectSearchTerm(mockStoreState);
+
+        expect(actualResult).toEqual(expectedResult)
+
     });
 })
 
