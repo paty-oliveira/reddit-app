@@ -8,11 +8,11 @@ export function SearchBar () {
             <form>
                 <input
                     type="text"
+                    placeholder="Search"
                     id="searchBar"
-                    name="searchBar"
-                    value="Search Reddit posts"
+                    aria-label="Search posts"
                 />
-                <button id="search-button" type="submit">Search</button>
+                <button id="search-button" type="submit" aria-label="Search">Search</button>
             </form>
         </div>
     )
