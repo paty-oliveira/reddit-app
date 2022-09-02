@@ -5,6 +5,7 @@ import {getPostsFromSubreddit } from "../../api/reddit";
 const initialState = {
     posts: [],
     subredditSelected: "r/Home/",
+    searchTerm: "",
     error: false,
     isLoading: false
 };

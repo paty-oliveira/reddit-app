@@ -17,6 +17,7 @@ describe("postsSlice reducer", () => {
         const expectedState = {
             posts: [],
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: false,
             isLoading: false
         };
@@ -28,6 +29,7 @@ describe("postsSlice reducer", () => {
         const initialState = {
             posts: [],
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: false,
             isLoading: false
         };
@@ -37,6 +39,7 @@ describe("postsSlice reducer", () => {
         const expectedState = {
             posts: [],
             subredditSelected: payload,
+            searchTerm: "",
             error: false,
             isLoading: false
         };
@@ -50,6 +53,7 @@ describe("postsSlice reducer", () => {
         const initialState = {
             posts: [],
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: false,
             isLoading: false
         };
@@ -57,6 +61,7 @@ describe("postsSlice reducer", () => {
         const expectedState = {
             posts: [],
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: false,
             isLoading: true
         };
@@ -70,6 +75,7 @@ describe("postsSlice reducer", () => {
         const initialState = {
             posts: [],
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: false,
             isLoading: false
         };
@@ -84,6 +90,7 @@ describe("postsSlice reducer", () => {
         const expectedState = {
             posts: payloadFromApi,
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: false,
             isLoading: false
         };
@@ -97,6 +104,7 @@ describe("postsSlice reducer", () => {
         const initialState = {
             posts: [],
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: false,
             isLoading: false
         };
@@ -104,6 +112,7 @@ describe("postsSlice reducer", () => {
         const expectedState = {
             posts: [],
             subredditSelected: "r/Home/",
+            searchTerm: "",
             error: true,
             isLoading: false
         };
@@ -126,6 +135,7 @@ describe("setSubredditSelected selector", () => {
             posts: {
                 posts: [],
                 subredditSelected: "r/Home/",
+                searchTerm: "",
                 error: false,
                 isLoading: false
             }
@@ -157,6 +167,7 @@ describe("selectPostsFromSubreddit selector", () => {
                     },
                 ],
                 subredditSelected: "r/Home/",
+                searchTerm: "",
                 error: false,
                 isLoading: false
             }
