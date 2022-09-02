@@ -25,6 +25,9 @@ const options = {
         },
         getPostsFromSubredditFailure(state) {
             state.error = true;
+        },
+        setSearchTerm(state, action){
+            state.searchTerm = action.payload;
         }
     }
 }
@@ -50,7 +53,8 @@ export const {
     setSubredditSelected,
     startGetPostsFromSubreddit,
     getPostsFromSubredditSuccess,
-    getPostsFromSubredditFailure
+    getPostsFromSubredditFailure,
+    setSearchTerm
 } = postsSlice.actions;
 
 export default postsSlice.reducer;

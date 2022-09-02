@@ -5,7 +5,8 @@ import reducer, {
     startGetPostsFromSubreddit,
     getPostsFromSubredditSuccess,
     getPostsFromSubredditFailure,
-    selectPostsFromSubreddit
+    selectPostsFromSubreddit,
+    setSearchTerm
 } from "./postsSlice";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
@@ -118,6 +119,30 @@ describe("postsSlice reducer", () => {
         };
 
         const actualState = reducer(initialState, getPostsFromSubredditFailure);
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it('should update searchTerm when setSearchTerm is triggered', function () {
+        const initialState = {
+            posts: [],
+            subredditSelected: "r/Home/",
+            searchTerm: "",
+            error: false,
+            isLoading: false
+        };
+
+        const newSearchTerm = "Posts from doors"
+
+        const expectedState = {
+            posts: [],
+            subredditSelected: "r/Home/",
+            searchTerm: newSearchTerm,
+            error: false,
+            isLoading: false
+        };
+
+        const actualState = reducer(initialState, setSearchTerm(newSearchTerm));
 
         expect(actualState).toEqual(expectedState);
     });
