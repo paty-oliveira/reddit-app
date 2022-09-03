@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./SearchBar.css";
 import {useDispatch, useSelector} from "react-redux";
 import { setSearchTerm, selectSearchTerm} from "../home/posts-container/postsSlice";
