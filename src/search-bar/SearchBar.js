@@ -23,7 +23,6 @@ export function SearchBar () {
                     value={searchTerm}
                     onChange={handleSearchTermChange}
                 />
-                <button id="search-button" type="submit" aria-label="Search">Search</button>
             </form>
         </div>
     )
