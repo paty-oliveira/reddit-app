@@ -7,7 +7,8 @@ import reducer, {
     getPostsFromSubredditFailure,
     selectPostsFromSubreddit,
     setSearchTerm,
-    selectSearchTerm
+    selectSearchTerm,
+    filterPostsBySearchTerm, selectPostsBasedOnSearchTerm
 } from "./postsSlice";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
@@ -236,6 +237,60 @@ describe("selectSearchTerm selector", () => {
 
         expect(actualResult).toEqual(expectedResult)
 
+    });
+})
+
+describe("selectPostsBasedOnSearchTerm action", () => {
+    it('should filter the posts based on the search term', function () {
+        const mockStoreState =  {
+            subreddits: {
+                subreddits: [],
+                error: false,
+                isLoading: false,
+            },
+            posts: {
+                posts: [
+                    {
+                        title: "What is this space beside the fireplace for?",
+                        author: "kilobytedawn",
+                        time: 1662156417,
+                        numberComments: 353,
+                        ups: 186,
+                        downs: 0,
+                        commentsUrl: "/r/Home/comments/x4dv4k/what_is_this_space_beside_the_fireplace_for/"
+                    },
+                    {
+                        title: "Can anyone tell me what this style of bedspread is called?",
+                        author: "FrankCostanzasBro",
+                        time: 1662223633,
+                        numberComments: 1,
+                        ups: 2,
+                        downs: 0,
+                        commentsUrl: "/r/Home/comments/x4yylz/can_anyone_tell_me_what_this_style_of_bedspread/"
+                    }
+                ],
+                subredditSelected: "r/Home/",
+                searchTerm: "fireplace",
+                error: false,
+                isLoading: false
+            }
+        };
+
+        const expectedResult = [
+                    {
+                        title: "What is this space beside the fireplace for?",
+                        author: "kilobytedawn",
+                        time: 1662156417,
+                        numberComments: 353,
+                        ups: 186,
+                        downs: 0,
+                        commentsUrl: "/r/Home/comments/x4dv4k/what_is_this_space_beside_the_fireplace_for/"
+                    },
+                ]
+
+        const actualResult = selectPostsBasedOnSearchTerm(mockStoreState);
+
+        expect(actualResult).toEqual(expectedResult);
     });
 })
 
