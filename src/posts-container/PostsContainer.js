@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import "./PostsContainer.css";
-import { Post } from "../../post/Post";
+import { Post } from "./post/Post";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSubredditUrl, fetchPostsFromSubreddit, selectPostsBasedOnSearchTerm } from "./postsSlice";
 

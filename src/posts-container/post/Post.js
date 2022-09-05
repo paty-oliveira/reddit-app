@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import "./Post.css";
 import { TiArrowSortedUp, TiArrowSortedDown, TiMessage } from "react-icons/ti";
 import moment from "moment";
-import { Comment } from "../comment/Comment";
-import { getPostComments } from "../api/reddit";
+import { Comment } from "../../comment/Comment";
+import { getPostComments } from "../../api/reddit";
 
 export function Post(props) {
 

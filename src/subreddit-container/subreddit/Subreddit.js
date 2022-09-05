@@ -1,7 +1,7 @@
 import React from "react";
 import "./Subreddit.css";
 import { useDispatch } from "react-redux";
-import {setSubredditSelected} from "../home/posts-container/postsSlice";
+import {setSubredditSelected} from "../../posts-container/postsSlice";
 
 
 export function Subreddit({title, url}) {

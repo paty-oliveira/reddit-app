@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import "./SubredditContainer.css";
-import { Subreddit } from "../../subreddit/Subreddit";
+import { Subreddit } from "./subreddit/Subreddit";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSubreddits, fetchSubreddits} from "./subredditSlice";
 
